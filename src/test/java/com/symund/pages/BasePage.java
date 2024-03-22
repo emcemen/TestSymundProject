@@ -60,6 +60,22 @@ public class BasePage {
     public WebElement logoutButton;
 
 
+    // this is for building the method for click a module just typing the name of the module
+    @FindBy(xpath = "//ul[@id='appmenu']/li/a")
+    public List<WebElement> mainModules;
+
+
+    //this method allow us to click a module with its name
+    public void clickModule(String targetModule) {
+        for (int i = 0; i < mainModules.size() - 1; i++) {
+            if (mainModules.get(i).getAttribute("aria-label").equals(targetModule)) {
+                mainModules.get(i).click();
+            }
+        }
+    }
+
+
+
 
 
 }
