@@ -25,7 +25,6 @@ public class LoginPage {
 
 
 
-
     public void loginFromFeature(String username, String pass){
         userName.sendKeys(username);
         password.sendKeys(pass);
