@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasePage {
@@ -22,6 +23,8 @@ public class BasePage {
         element.click();
 
     }
+
+
 
     @FindBy(xpath = "(//a[contains(.,'Talk')])[1]")
     public List<WebElement> talk;
@@ -59,9 +62,15 @@ public class BasePage {
     @FindBy(id = "expand")
     public WebElement logoutButton;
 
+    @FindBy(xpath = "//*[@id=\"expand\"]/div[1]/img")
+    public WebElement userIcon;
+
+
+    @FindBy(xpath = "//*[@class=\"edit-panels icon-rename\"]")
+    public WebElement customize;
 
     // this is for building the method for click a module just typing the name of the module
-    @FindBy(xpath = "//ul[@id='appmenu']/li/a")
+    @FindBy(xpath = "//*[@id=\"appmenu\"]/li/a")
     public List<WebElement> mainModules;
 
 
@@ -73,6 +82,17 @@ public class BasePage {
             }
         }
     }
+
+    public static List<String> getModulesAsString(List<WebElement> list) {
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list) {
+            elemTexts.add(el.getAttribute("aria-label"));
+        }
+        return elemTexts;
+    }
+
+    @FindBy(xpath = "//*[@id=\"expanddiv\"]/ul/li[1]/div/span")
+    public WebElement userName;
 
 
 
