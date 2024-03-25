@@ -1,6 +1,7 @@
 package com.symund.step_definitions;
 
 import com.symund.pages.BasePage;
+import com.symund.pages.DashboardPage;
 import com.symund.pages.LoginPage;
 import com.symund.utilities.BrowserUtils;
 import com.symund.utilities.ConfigurationReader;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class US_001_Dashboard_Functionality_StepDef {
     LoginPage loginPage = new LoginPage();
     BasePage basePage = new BasePage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @Given("user is on the login page of Symund Web App")
     public void user_is_on_the_login_page_of_symund_web_app() {
@@ -36,48 +38,44 @@ public class US_001_Dashboard_Functionality_StepDef {
         Assert.assertTrue(actualModules.containsAll(expectedModules));
         //Verify username
         basePage.userIcon.click();
-        String actualUserName=basePage.userName.getText();
-        String expectedUserName=ConfigurationReader.getProperty("username");
+        String actualUserName = basePage.userName.getText();
+        String expectedUserName = ConfigurationReader.getProperty("username");
         Assert.assertTrue(actualUserName.equalsIgnoreCase(expectedUserName));
     }
-/*
+
     @When("user click customize button")
     public void user_click_customize_button() {
-     //   basePage.customize.click();
+        basePage.customize.click();
+
     }
 
     @When("select any  of the widgets")
     public void select_any_of_the_widgets() {
-
+        dashboardPage.pickRandomWidget();
     }
 
     @When("click close button")
     public void click_close_button() {
-
+        dashboardPage.closeButton.click();
     }
 
     @Then("user should see choosed widgets on dashboard")
     public void user_should_see_choosed_widgets_on_dashboard() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @When("user click Set status button")
     public void user_click_set_status_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
+    }
     @When("select any of the status")
     public void select_any_of_the_status() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @Then("user should see choosed status on dashboard")
     public void user_should_see_choosed_status_on_dashboard() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
-*/
+
 }
